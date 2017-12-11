@@ -9,11 +9,6 @@ import { ISSUES } from '../mock-issues';
 })
 export class IssuesComponent implements OnInit {
   issues = ISSUES;
-  selectedIssue: Issue;
-
-  onSelect(issue: Issue): void {
-    this.selectedIssue = issue;
-  }
   constructor() { }
 
   ngOnInit() {

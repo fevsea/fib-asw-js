@@ -4,9 +4,10 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
   <li *ngFor="let issue of issues"
-  [class.selected]="issue === selectedIssue"
-  (click)="onSelect(issue)">
-    <span class="badge">{{issue.id}}</span> {{issue.name}}
+  [class.selected]="issue === selectedIssue">
+    <a routerLink="/detail/{{issue.id}}">
+      <span class="badge">{{issue.id}}</span> {{issue.name}}
+    </a>
   </li>
 </ul>
 <app-issue-detail [issue]="selectedIssue"></app-issue-detail>
