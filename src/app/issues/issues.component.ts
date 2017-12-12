@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Issue } from '../issue';
-import { ISSUES } from '../mock-issues';
+import { IssueService } from '../issue.service';
 
 @Component({
   selector: 'app-issues',
@@ -8,10 +8,16 @@ import { ISSUES } from '../mock-issues';
   styleUrls: ['./issues.component.css']
 })
 export class IssuesComponent implements OnInit {
-  issues = ISSUES;
-  constructor() { }
+  issues : Issue[];
+  constructor(private issueService: IssueService) { }
 
   ngOnInit() {
+    this.getIssues();
+  }
+
+  getIssues(): void {
+    this.issueService.getIssues()
+    .subscribe(issues => this.issues = issues);
   }
 
 }
