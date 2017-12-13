@@ -6,7 +6,7 @@
   <li *ngFor="let issue of issues"
   [class.selected]="issue === selectedIssue">
     <a routerLink="/detail/{{issue.id}}">
-      <span class="badge">{{issue.id}}</span> {{issue.name}}
+      <span class="badge">{{issue.id}}</span> {{issue.name}} {{issue.title}}
     </a>
   </li>
 </ul>
