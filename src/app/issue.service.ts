@@ -27,11 +27,11 @@ export class IssueService {
 
   getIssues(): Observable<Issue[]> {
     //return of(ISSUES);
-    this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('IssueService: feching issues...');
     return this.http.get<Issue[]>(this.issuesUrl, httpOptions2)
       .pipe(
-        tap(issues => this.log(`fetched heroes`)),
-        catchError(this.handleError('getHeroes', []))
+        tap(issues => this.log(`fetched issues`)),
+        catchError(this.handleError('getIssues', []))
       );
   }
 
@@ -57,7 +57,7 @@ export class IssueService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add('IssueService: ' + message);
   }
 
 }
