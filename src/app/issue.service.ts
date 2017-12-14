@@ -15,12 +15,16 @@ const httpOptions2 = {
   headers: new HttpHeaders({ 'Authorization': 'Token 4e0d12e68ac4b387e87e04d8646f461cb782000d' })
 };
 
+const httpOptions3 = {
+  headers: new HttpHeaders({ 'Authorization': 'Token 4e0d12e68ac4b387e87e04d8646f461cb782000d', 'Cookies' : 'csrftoken=rzIccVoMFolkJ7e8y9nAkfOXo5wrcPNXpkZY4LbkzfU8WYM2tKKwWUbsy1Xa7bXL; sessionid=qchid5cl8kphda18b3yeix09o4bewycy' })
+};
+
 @Injectable()
 export class IssueService {
 
   //private issuesUrl = 'http://127.0.0.1:8000/meetings';
-  private issuesUrl = 'https://jsonplaceholder.typicode.com/posts';
-  //private issuesUrl = 'https://asw-django.herokuapp.com/v1/issues/';
+  //private issuesUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private issuesUrl = 'http://localhost:8000/v1/issues';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -28,12 +32,21 @@ export class IssueService {
   getIssues(): Observable<Issue[]> {
     //return of(ISSUES);
     this.messageService.add('IssueService: feching issues...');
-    return this.http.get<Issue[]>(this.issuesUrl, httpOptions2)
+    return this.http.get<Issue[]>(this.issuesUrl, httpOptions3)
       .pipe(
-        tap(issues => this.log(`fetched issues`)),
+        tap(issues => this.log(`fetched issues!!`)),
         catchError(this.handleError('getIssues', []))
       );
   }
+
+  /** GET hero by id. Will 404 if id not found */
+    getIssue(id: number): Observable<Issue> {
+      const url = `${this.issuesUrl}/${id}`;
+      return this.http.get<Hero>(url).pipe(
+        tap(_ => this.log(`fetched issue id=${id}`)),
+        catchError(this.handleError<Hero>(`getIssue id=${id}`))
+      );
+    }
 
   /**
    * Handle Http operation that failed.

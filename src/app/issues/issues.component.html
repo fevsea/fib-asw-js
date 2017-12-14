@@ -1,13 +1,49 @@
-<p>
-  issues works!
-</p>
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let issue of issues"
-  [class.selected]="issue === selectedIssue">
-    <a routerLink="/detail/{{issue.id}}">
-      <span class="badge">{{issue.id}}</span> {{issue.name}} {{issue.title}}
-    </a>
-  </li>
-</ul>
-<app-issue-detail [issue]="selectedIssue"></app-issue-detail>
+<h2>My Issues</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Kind</td>
+            <td>Priority</td>
+            <td>Status</td>
+            <td>Votes</td>
+            <td>Assignee</td>
+            <td>Created</td>
+            <td>Updated</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let issue of issues">
+          <td scope="row">{{issue.id}}</td>
+          <td><a routerLink="/detail/{{issue.id}}">{{issue.title}}</a></td>
+          <td>
+            <a href="javascript:void(0)" onclick="setGetParameter('kind','BG')">
+            {{issue.kind}}
+            </a>
+          </td>
+          <td>
+            <a href="javascript:void(0)" onclick="setGetParameter('priority','TR')">
+              {{issue.kind}}
+            </a>
+          </td>
+          <td>
+            <a href="javascript:void(0)" onclick="setGetParameter('status','WF')">
+              <p id="WF" class="no-margin">{{issue.kind}}</p>
+            </a>
+          </td>
+          <td>
+            <a href="javascript:void(0)" onclick="setGetParameter('votes','0')">
+              {{issue.votes_count}}
+            </a>
+          </td>
+          <td>
+            <a href="javascript:void(0)" onclick="setGetParameter('assignee','1')">
+              {{issue.assignee}}
+            </a>
+          </td>
+          <td>{{issue.added}}</td>
+          <td>{{issue.updated}}</td>
+        </tr>
+    </tbody>
+  </table>

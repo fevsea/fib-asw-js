@@ -1,13 +1,45 @@
 <div *ngIf="issue">
-
-  <h2>{{ issue.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{issue.id}}</div>
+  <h2>{{ issue.title | uppercase }} Details</h2>
   <div>
-    <label>name:
-      <input [(ngModel)]="issue.name" placeholder="name">
-    </label>
+    <ul>
+      <li>
+        <b>ID: </b>
+        {{issue.id}}
+      </li>
+      <li>
+        <b>Title: </b>
+        {{issue.title}}
+      </li>
+      <li>
+        <b>Description: </b>
+        {{issue.description}}
+      </li>
+      <li>
+        <b>Assignee: </b>
+        {{issue.assignee}}
+      </li>
+      <li>
+        <b>Priority: </b>
+        {{issue.priority}}
+      </li>
+      <li>
+        <b>Created: </b>
+        {{issue.added}}
+      </li>
+      <li>
+        <b>Updated: </b>
+        {{issue.updated}}
+      </li>
+      <li>
+        <b>Votes: </b>
+        {{issue.votes_count}}
+      </li>
+      <li>
+        <b>Watches: </b>
+        {{issue.watches_count}}
+      </li>
+    </ul>
   </div>
-
 </div>
 
 <button (click)="goBack()">go back</button>
