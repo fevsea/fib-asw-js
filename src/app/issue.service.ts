@@ -12,11 +12,8 @@ const httpOptions = {
 };
 
 const httpOptions2 = {
-  headers: new HttpHeaders({ 'Authorization': 'Token 4e0d12e68ac4b387e87e04d8646f461cb782000d' })
-};
-
-const httpOptions3 = {
-  headers: new HttpHeaders({ 'Authorization': 'Token 4e0d12e68ac4b387e87e04d8646f461cb782000d', 'Cookies' : 'csrftoken=rzIccVoMFolkJ7e8y9nAkfOXo5wrcPNXpkZY4LbkzfU8WYM2tKKwWUbsy1Xa7bXL; sessionid=qchid5cl8kphda18b3yeix09o4bewycy' })
+  headers: new HttpHeaders().set('Authorization', 'Token cb219b660f6f623efd195aabe2920951968fe3fc')
+  .set('Content-Type','application/json')
 };
 
 @Injectable()
@@ -32,7 +29,7 @@ export class IssueService {
   getIssues(): Observable<Issue[]> {
     //return of(ISSUES);
     this.messageService.add('IssueService: feching issues...');
-    return this.http.get<Issue[]>(this.issuesUrl, httpOptions3)
+    return this.http.get<Issue[]>(this.issuesUrl,  httpOptions2)
       .pipe(
         tap(issues => this.log(`fetched issues!!`)),
         catchError(this.handleError('getIssues', []))
@@ -42,9 +39,9 @@ export class IssueService {
   /** GET hero by id. Will 404 if id not found */
     getIssue(id: number): Observable<Issue> {
       const url = `${this.issuesUrl}/${id}`;
-      return this.http.get<Hero>(url).pipe(
+      return this.http.get<Issue>(url).pipe(
         tap(_ => this.log(`fetched issue id=${id}`)),
-        catchError(this.handleError<Hero>(`getIssue id=${id}`))
+        catchError(this.handleError<Issue>(`getIssue id=${id}`))
       );
     }
 
