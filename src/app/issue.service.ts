@@ -39,7 +39,7 @@ export class IssueService {
   /** GET hero by id. Will 404 if id not found */
     getIssue(id: number): Observable<Issue> {
       const url = `${this.issuesUrl}/${id}`;
-      return this.http.get<Issue>(url).pipe(
+      return this.http.get<Issue>(url,httpOptions2).pipe(
         tap(_ => this.log(`fetched issue id=${id}`)),
         catchError(this.handleError<Issue>(`getIssue id=${id}`))
       );
