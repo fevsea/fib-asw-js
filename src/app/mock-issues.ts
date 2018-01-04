@@ -1,14 +1,16 @@
 import { Issue } from './issue';
 
 export const ISSUES: Issue[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
+  { id: 11,
+    name: 'Mr. Nice',
+    title:"title",
+    kind:"TD",
+    priority:"H",
+    status:"D", 
+    description:"Desc",
+    updated:"1234",
+    added:"1234",
+    assignee:0,
+    watches_count:12,
+    votes_count:1 }
 ];
