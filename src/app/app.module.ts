@@ -6,6 +6,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+import { IssueCreateComponent } from './issue-create/issue-create.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { IssueService } from './issue.service';
 import { MessageService } from './message.service';
@@ -23,6 +24,7 @@ import { MessagesComponent } from './messages/messages.component';
     AppComponent,
     IssuesComponent,
     IssueDetailComponent,
+    IssueCreateComponent,
     MessagesComponent
   ],
 
