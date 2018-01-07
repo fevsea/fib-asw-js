@@ -29,7 +29,7 @@ export class IssueService {
   getIssues(): Observable<Issue[]> {
     //return of(ISSUES);
     this.messageService.add('IssueService: feching issues...');
-    return this.http.get<Issue[]>(this.issuesUrl,  httpOptions2)
+    return this.http.get<Issue[]>(`${this.issuesUrl}/`,  httpOptions2)
       .pipe(
         tap(issues => this.log(`fetched issues!!`)),
         catchError(this.handleError('getIssues', []))
