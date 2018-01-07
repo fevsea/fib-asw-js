@@ -9,6 +9,7 @@ import { IssueService } from '../issue.service';
   templateUrl: './issue-detail.component.html',
   styleUrls: ['./issue-detail.component.css']
 })
+
 export class IssueDetailComponent implements OnInit {
   @Input() issue: Issue;
 
@@ -25,6 +26,12 @@ export class IssueDetailComponent implements OnInit {
   getIssue(): void{
     const id = +this.route.snapshot.paramMap.get('id');
     this.issueService.getIssue(id)
+    .subscribe(issue => this.issue = issue);
+  }
+
+  deleteIssue(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.issueService.deleteIssue(id)
     .subscribe(issue => this.issue = issue);
   }
   goBack(): void {

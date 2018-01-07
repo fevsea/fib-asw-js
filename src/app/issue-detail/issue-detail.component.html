@@ -1,4 +1,26 @@
 <div class="container" *ngIf="issue">
+
+  <div class="dropdown show">
+
+    <a class="btn btn-danger margin-btn left" (click)='deleteIssue()' role="button">Delete</a>
+
+    <a class="btn btn-outline-success margin-btn left" href="{% url 'watch' issue.id user.id %}" role="button">Watch</a>
+
+    <a class="btn btn-outline-success margin-btn left" href="{% url 'like' issue.id user.id %}">Like</a>
+
+    <a class="btn btn-success margin-btn left" href="{% url 'edit' issue.id %}" role="button">Edit</a>
+
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Workflow
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">New</a>
+      <a class="dropdown-item" href="#">Wontfix</a>
+      <a class="dropdown-item" href="#">Resolved</a>
+    </div>
+  </div>
+
   <div>
     <ul>
       <div class="left half">
