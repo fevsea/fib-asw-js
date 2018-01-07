@@ -12,6 +12,7 @@ import { IssueService } from '../issue.service';
 export class IssueCreateComponent implements OnInit {
   @Input() issue: Issue;
 
+
   constructor(
     private route: ActivatedRoute,
     private issueService: IssueService,
@@ -25,6 +26,17 @@ export class IssueCreateComponent implements OnInit {
     this.location.back();
   }
 
+  createIssue(): void{
+    var imagePost = {
+      title: 'title',
+      description: 'description',
+      kind: 'BG',
+      priority: 'TR',
+      status: 'NW'
+    }
+    this.issueService.addIssue(imagePost)
+    .subscribe(issue => this.issue = issue);
+  }
 
 
 }

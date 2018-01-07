@@ -58,6 +58,14 @@ export class IssueService {
       );
     }
 
+    addIssue (issue: Issue): Observable<Issue> {
+      window.location.href=this.homeUrl;
+      return this.http.post<Issue>(`${this.issuesUrl}/`, issue, httpOptions2).pipe(
+        tap((issue: Issue) => this.log(`added issue w/ id=${issue.id}`)),
+        catchError(this.handleError<Issue>('addIssue'))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

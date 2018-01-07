@@ -2,9 +2,18 @@
   <div>
     <ul>
       <div class="left half">
-        <ul class="list-group margin-right">
-            <li id="id-issue" class="list-group-item center topRow"><b>ID: </b>
-        </ul>
+        <ul class="list-group">
+              <li class="list-group-item list-group-item-action"><b>Title</b></li>
+              <li class="list-group-item list-group-item-action"><b>Description</b></li>
+              <li class="list-group-item list-group-item-action"><b>Assignee</b></li>
+              <li class="list-group-item list-group-item-action"><b>Status</b></li>
+              <li class="list-group-item list-group-item-action"><b>Type</b></li>
+              <li class="list-group-item list-group-item-action"><b>Priority</b></li>
+      </ul>
+
+      <div style="text-align:center;">
+        <button class="btn btn-primary marginTop" (click)='createIssue()' type="button">Create</button>
+      </div>
     </div>
     </ul>
   </div>
