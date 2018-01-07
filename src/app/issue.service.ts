@@ -21,7 +21,7 @@ export class IssueService {
 
   //private issuesUrl = 'http://127.0.0.1:8000/meetings';
   //private issuesUrl = 'https://jsonplaceholder.typicode.com/posts';
-  private issuesUrl = 'http://localhost:8000';
+  private issuesUrl = 'http://localhost:8000/v1/issues';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -29,7 +29,7 @@ export class IssueService {
   getIssues(): Observable<Issue[]> {
     //return of(ISSUES);
     this.messageService.add('IssueService: feching issues...');
-    return this.http.get<Issue[]>(`${this.issuesUrl}/v1/issues/`,  httpOptions2)
+    return this.http.get<Issue[]>(this.issuesUrl,  httpOptions2)
       .pipe(
         tap(issues => this.log(`fetched issues!!`)),
         catchError(this.handleError('getIssues', []))
@@ -38,7 +38,7 @@ export class IssueService {
 
   /** GET issue by id. Will 404 if id not found */
     getIssue(id: number): Observable<Issue> {
-      const url = `${this.issuesUrl}/v1/issues/${id}`;
+      const url = `${this.issuesUrl}/${id}`;
       return this.http.get<Issue>(url,httpOptions2).pipe(
         tap(_ => this.log(`fetched issue id=${id}`)),
         catchError(this.handleError<Issue>(`getIssue id=${id}`))
@@ -48,9 +48,9 @@ export class IssueService {
     /** DELETE: delete the issue from the server */
     deleteIssue (issue: Issue | number): Observable<Issue> {
       const id = typeof issue === 'number' ? issue : issue.id;
-      const url = `${this.issuesUrl}/${id}/delete/`;
+      const url = `${this.issuesUrl}/${id}/`;
 
-      return this.http.delete<Issue>(url, httpOptions).pipe(
+      return this.http.delete<Issue>(url, httpOptions2).pipe(
         tap(_ => this.log(`deleted issue id=${id}`)),
         catchError(this.handleError<Issue>('deleteIssue'))
       );
