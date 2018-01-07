@@ -22,6 +22,7 @@ export class IssueService {
   //private issuesUrl = 'http://127.0.0.1:8000/meetings';
   //private issuesUrl = 'https://jsonplaceholder.typicode.com/posts';
   private issuesUrl = 'http://localhost:8000/v1/issues';
+  private homeUrl = 'http://localhost:4200/';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -49,6 +50,7 @@ export class IssueService {
     deleteIssue (issue: Issue | number): Observable<Issue> {
       const id = typeof issue === 'number' ? issue : issue.id;
       const url = `${this.issuesUrl}/${id}/`;
+      window.location.href=this.homeUrl;
 
       return this.http.delete<Issue>(url, httpOptions2).pipe(
         tap(_ => this.log(`deleted issue id=${id}`)),
