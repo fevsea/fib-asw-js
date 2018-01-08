@@ -1,0 +1,40 @@
+<div class="container" *ngIf="issue">
+
+  <div class="dropdown show">
+
+    <a class="btn btn-danger margin-btn left" (click)='deleteIssue()' role="button">Delete</a>
+
+    <a class="btn btn-outline-success margin-btn left" href="{% url 'watch' issue.id user.id %}" role="button">Watch</a>
+
+    <a class="btn btn-outline-success margin-btn left" href="{% url 'like' issue.id user.id %}">Like</a>
+
+    <a class="btn btn-success margin-btn left" href="{% url 'edit' issue.id %}" role="button">Edit</a>
+
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Workflow
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">New</a>
+      <a class="dropdown-item" href="#">Wontfix</a>
+      <a class="dropdown-item" href="#">Resolved</a>
+    </div>
+  </div>
+
+  <div>
+      <ul class="list-group marginTop">
+            <li id="id-issue" class="list-group-item center topRow"><b>ID: </b>{{ issue.id }}</li>
+            <li class="list-group-item list-group-item-action"><b>Title: </b>{{ issue.title }}</li>
+            <li class="list-group-item list-group-item-action"><b>Description: </b>{{ issue.description }}</li>
+            <li class="list-group-item list-group-item-action"><b>Assignee: </b>{{ issue.assignee }}
+
+            <li class="list-group-item list-group-item-action"><b>Status: </b>{{ issue.status }}</li>
+            <li class="list-group-item list-group-item-action"><b>Type: </b>{{ issue.kind }}</li>
+            <li class="list-group-item list-group-item-action"><b>Priority: </b>{{ issue.priority }}</li>
+            <li class="list-group-item list-group-item-action"><b>Created: </b>{{ issue.added }}</li>
+            <li class="list-group-item list-group-item-action"><b>Updated: </b>{{ issue.updated }}</li>
+            <li class="list-group-item list-group-item-action"><b>Votes: </b>{{ issue.votes_count }}</li>
+            <li class="list-group-item list-group-item-action"><b>Watchs: </b>{{ issue.watches_count }}</li>
+    </ul>
+  </div>
+</div>
