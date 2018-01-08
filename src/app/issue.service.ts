@@ -21,8 +21,9 @@ export class IssueService {
 
   //private issuesUrl = 'http://127.0.0.1:8000/meetings';
   //private issuesUrl = 'https://jsonplaceholder.typicode.com/posts';
-  private issuesUrl = 'http://localhost:8000/v1/issues';
-  private homeUrl = 'http://localhost:4200/';
+  //private issuesUrl = 'http://localhost:8000/v1/issues';
+  private issuesUrl = 'http://asw-django.herokuapp.com//v1/issues';
+  private homeUrl = 'http://asw-js.herokuapp.com';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 

@@ -26,14 +26,15 @@ export class IssueCreateComponent implements OnInit {
     this.location.back();
   }
 
-  createIssue(): void{
-    var imagePost = {
-      title: 'title',
-      description: 'description',
-      kind: 'BG',
-      priority: 'TR',
-      status: 'NW'
-    }
+  createIssue(): void {
+    let imagePost = new Issue();
+    imagePost.title = 'title';
+    imagePost.title = 'title';
+    imagePost.description = 'description';
+    imagePost.kind = 'BG';
+    imagePost.priority = 'TR';
+    imagePost.status = 'NW';
+    imagePost.id = null;
     this.issueService.addIssue(imagePost)
     .subscribe(issue => this.issue = issue);
   }
