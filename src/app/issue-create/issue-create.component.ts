@@ -29,7 +29,6 @@ export class IssueCreateComponent implements OnInit {
   createIssue(): void {
     let imagePost = new Issue();
     imagePost.title = 'title';
-    imagePost.title = 'title';
     imagePost.description = 'description';
     imagePost.kind = 'BG';
     imagePost.priority = 'TR';
